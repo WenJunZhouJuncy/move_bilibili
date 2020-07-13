@@ -54,6 +54,7 @@
 
 <script>
 import Vue from 'vue';
+import $COOKIES from "@/assets/js/common/token";
 import { NavBar, Form, Field, Button, Toast } from 'vant';
 Vue.use(NavBar).use(Form).use(Field).use(Button).use(Toast)
 export default {
@@ -95,7 +96,14 @@ export default {
     },
     // 注册
     register(data) {
+      const toastLoading = Toast.loading({
+        message: '正在注册',
+        forbidClick: true,
+        duration: 0,
+        loadingType: 'spinner',
+      });
       this.$api.register(data).then(res => {
+        toastLoading.clear()
         if(res.data.code === 200) {
           this.access = !this.access
           this.from = {
@@ -114,9 +122,17 @@ export default {
     },
     // 登录
     login(data) {
+      const toastLoading2 = Toast.loading({
+        message: '正在登录',
+        forbidClick: true,
+        duration: 0,
+        loadingType: 'spinner',
+      });
       this.$api.login(data).then(res => {
+        toastLoading2.clear()
         if(res.data.code === 200){
-          this.$router.push({path: '/user'})
+          $COOKIES.setToken('admin',res.data.token)
+          this.$router.push({path: '/user',query:{id:res.data.id}})
           Toast.success(res.data.msg)
         }else{
           Toast.fail(res.data.msg);

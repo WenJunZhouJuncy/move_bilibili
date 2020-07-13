@@ -62,23 +62,34 @@
 import Vue from 'vue'
 import { NavBar, Search, Image as VanImage, Lazyload, Button, Tab, Tabs} from 'vant'
 Vue.use(NavBar).use(Search).use(VanImage).use(Lazyload).use(Button).use(Tab).use(Tabs)
-  export default {
-    name: 'user',
-    components: {
-      NavBar,Search,VanImage,Button,Tab,Tabs
-    },
-    data() {
-      return {
-        searchVal: '',
-        tabActive: 'dynamic'
-      }
-    },
-    methods: {
-      onClickRight() {
+export default {
+  name: 'user',
+  components: {
+    NavBar,Search,VanImage,Button,Tab,Tabs
+  },
+  data() {
+    return {
+      id: '',
+      searchVal: '',
+      tabActive: 'dynamic'
+    }
+  },
+  created() {
+    this.id = this.$route.query.id
+    this.getUserInfo(this.id)
+  },
+  methods: {
+    onClickRight() {
 
-      }
+    },
+    getUserInfo(id) {
+      console.log(id);
+      this.$api.user(id).then(res => {
+        console.log(res);
+      })
     }
   }
+}
 </script>
 
 <style lang="less">
