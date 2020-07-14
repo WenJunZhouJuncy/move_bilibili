@@ -165,8 +165,7 @@ Vue.use(NavBar).use(Search).use(VanImage).use(Lazyload).use(Button).use(Tab).use
       }
       .datum_box{
         background: #fff;
-        padding-top: 5.667vw;
-        padding-bottom: 3.667vw;
+        padding: 5.667vw 3.733vw 3.667vw;
         border-bottom: 0.267vw solid #ddd;
         .icon-boy{
           color: #5aa7f9;
