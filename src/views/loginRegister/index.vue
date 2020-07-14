@@ -62,13 +62,10 @@ export default {
   components: {
     NavBar, Form, Field, Button
   },
-  created() {
-    this.access = this.$route.query.access === 'login' ? true : false
-  },
   data() {
     return {
       key: new Date().getTime(),
-      access: '',
+      access: true,
       from: {
         name: '',
         username: '',
@@ -132,7 +129,8 @@ export default {
         toastLoading2.clear()
         if(res.data.code === 200){
           $COOKIES.setToken('admin',res.data.token)
-          this.$router.push({path: '/user',query:{id:res.data.id}})
+          $COOKIES.setUserId('id',res.data.id)
+          this.$router.push({path: '/bilibili/user'})
           Toast.success(res.data.msg)
         }else{
           Toast.fail(res.data.msg);

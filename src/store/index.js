@@ -4,8 +4,15 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    ROUTERTO: ''
+  },
+  mutations: {
+    SETROUTERTO(state, val) {
+      state.ROUTERTO = val
+      console.log(state)
+    }
+  },
   actions: {},
   modules: {}
 });

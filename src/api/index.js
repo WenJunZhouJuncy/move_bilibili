@@ -1,4 +1,5 @@
 import http from '@/assets/js/request.js'
+import $COOKIES from '@/assets/js/common/token.js'
 var apiObj = {
   register: (data) => {
     return http.request({
@@ -14,11 +15,10 @@ var apiObj = {
       data
     })
   },
-  user: (data) => {
+  user: () => {
     return http.request({
-      url: '/user',
-      method: 'post',
-      data
+      url: '/user/' + $COOKIES.getUserId('id'),
+      method: 'get',
     })
   }
 }
