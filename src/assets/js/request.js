@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import $COOKIES from './common/token.js'
 const BASEURL = process.env.NODE_ENV === 'production' ? '' : '/devApi';
 
 const http = axios.create({ //创建拦截器
@@ -13,7 +13,8 @@ http.interceptors.request.use( // 在发送请求之前做些什么
     // 添加头部信息
     // config.headers.Tokey = getToken();
     // config.headers.UserName = getUsername();
-    // console.log(config.headers);
+    config.headers.Authorization = 'Bearer ' + ($COOKIES.getToken('admin') || '');
+    console.log(config.headers);
     return config;
   },
   function (error) {

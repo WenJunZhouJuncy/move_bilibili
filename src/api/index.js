@@ -13,6 +13,13 @@ var apiObj = {
       method: 'post',
       data
     })
+  },
+  user: (data) => {
+    return http.request({
+      url: '/user',
+      method: 'post',
+      data
+    })
   }
 }
 export default apiObj
