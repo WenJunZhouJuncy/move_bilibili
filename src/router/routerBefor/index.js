@@ -6,7 +6,6 @@ Vue.use(Toast)
 // 路由拦截
 router.beforeEach((to, from, next) => {
   if ($COOKIES.getToken('admin') && $COOKIES.getUserId('id')) {
-    console.log(to, from);
     if ('/loginRegister'.includes(to.path)) {
       let routerTo = sessionStorage.getItem('routerTo')
       next(routerTo)

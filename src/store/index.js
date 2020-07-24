@@ -1,17 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
+import $COOKIES from "@/assets/js/common/token";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    ROUTERTO: ''
+    headerImg: $COOKIES.getHeaderImg('headerImg') || ''
   },
   mutations: {
-    SETROUTERTO(state, val) {
-      state.ROUTERTO = val
-      console.log(state)
-    }
   },
   actions: {},
   modules: {}

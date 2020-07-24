@@ -4,6 +4,9 @@ const $COOKIES = {
   getToken(key) {
     return Cookies.get(key)
   },
+  getHeaderImg(key) {
+    return Cookies.get(key)
+  },
   getUserId(key) {
     return Cookies.get(key)
   },
@@ -11,6 +14,9 @@ const $COOKIES = {
     Cookies.set(key,val)
   },
   setUserId(key, val) {
+    Cookies.set(key,val)
+  },
+  setHeaderImg(key, val) {
     Cookies.set(key,val)
   },
   removeToken(key) {

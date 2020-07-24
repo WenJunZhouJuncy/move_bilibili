@@ -14,7 +14,7 @@
           round
           width="7.9vw"
           height="7.9vw"
-          :src="user_img ? user_img : require('../assets/img/userHeadImg.png')"
+          :src="headerImg ? headerImg : require('../assets/img/userHeadImg.png')"
           @click="$route.path === '/bilibili/user' ? '' : $router.push({path: '/bilibili/user'})"
         />
         <van-button size="mini">下载App</van-button>
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Vue from 'vue'
 import { NavBar, Search, Image as VanImage, Lazyload, Button} from 'vant'
 Vue.use(NavBar).use(Search).use(VanImage).use(Lazyload).use(Button)
@@ -37,6 +38,11 @@ export default {
   },
   components: {
     NavBar, Search, VanImage, Lazyload, Button
+  },
+  computed: {
+    ...mapState({
+      headerImg: state => state.headerImg
+    })
   },
   methods: {
 

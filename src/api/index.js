@@ -20,6 +20,26 @@ var apiObj = {
       url: '/user/' + $COOKIES.getUserId('id'),
       method: 'get',
     })
+  },
+  uploaderHeaderImg: (data) => {
+    return http.request({
+      url: '/upload/',
+      method: 'post',
+      data
+    })
+  },
+  editUserInfo: (data) => {
+    return http.request({
+      url: '/update/' + $COOKIES.getUserId('id'),
+      method: 'post',
+      data
+    })
+  },
+  category: () => {
+    return http.request({
+      url: '/category',
+      method: 'get',
+    })
   }
 }
 export default apiObj

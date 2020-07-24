@@ -28,7 +28,7 @@
       <div class="datum_box">
         <div class="name_box">
           <span v-text="userInfo.name"></span>
-          <span v-if="userInfo.gender" class="iconfont icon-boy"></span>
+          <span v-if="userInfo.gender === '男'" class="iconfont icon-boy"></span>
           <span v-else class="iconfont icon-gir"></span>
         </div>
       </div>
@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import $COOKIES from "@/assets/js/common/token";
 import Vue from 'vue'
 import { NavBar, Search, Image as VanImage, Lazyload, Button, Tab, Tabs} from 'vant'
 Vue.use(NavBar).use(Search).use(VanImage).use(Lazyload).use(Button).use(Tab).use(Tabs)
@@ -80,6 +81,7 @@ export default {
           gender: userData.gender,
           name: userData.name,
         }
+        $COOKIES.setUserId('headerImg',userData.user_img)
       })
     }
   }

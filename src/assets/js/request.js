@@ -18,7 +18,6 @@ http.interceptors.request.use( // 在发送请求之前做些什么
     // config.headers.Tokey = getToken();
     // config.headers.UserName = getUsername();
     config.headers.authorization = 'Bearer ' + ($COOKIES.getToken('admin') || '');
-    console.log(config.headers);
     return config;
   },
   function (error) {
@@ -28,8 +27,6 @@ http.interceptors.request.use( // 在发送请求之前做些什么
 
 // 添加响应拦截器
 http.interceptors.response.use((response) => {
-
-  console.log(response);
   // 对响应数据做点什么  response请求成功返回的数据
   if (response.status !== 200) {
     return Promise.reject(response);
@@ -41,7 +38,6 @@ http.interceptors.response.use((response) => {
     console.dir(error)
     let err = error.response
     // Router.push({ path: '/loginRegister' })
-    Toast.fail('身份失效！请重新登录')
 });
 
 export default http
